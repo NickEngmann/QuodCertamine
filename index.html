@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Titillium+Web:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/ie8.css" />
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript">
+    	function showDiv() {
+   			document.getElementById('CEO').style.display = "block";
+   			$('html, body').animate({ scrollTop: $('#CEO').offset().top }, 'slow');
+   			return false;
+		}
+	</script>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
+	<style type="text/css" media="all">
+			html, #c-carousel {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			#c-carousel {
+				background: #f9f9f3;
+			}
+			#c-carousel * {
+				font-family: Arial, Geneva, SunSans-Regular, sans-serif;
+				font-size: 14px;
+				color: #222;
+				line-height: 20px;
+			}
+
+			#wrapper {
+				height: 100%;
+				width: 100%;
+				min-height: 650px;
+				min-width: 100%;
+				padding-top: 1px;
+			}
+			#slider {
+				margin: 0 0 0 0;
+				height: 600px;
+				overflow: hidden;
+				background: url(img/ajax-loader.gif) center center no-repeat;
+			}
+			
+			#slider .slide {
+				position: relative;
+				display: none;
+				height: 600px;
+				float: left;
+				background-position: center right;
+				cursor: pointer;
+				border-left: 1px solid #fff;
+			}
+			
+			#slider .slide:first-child {
+				border: none;
+			}
+			
+			#slider .slide.active {
+				cursor: default;
+			}
+			
+			#slider .slide-block {
+				position: absolute;
+				left: 140px;
+				bottom: 185px;
+				display: inline-block;
+				width: 435px;
+				background-color: #fff;
+				background-color: rgba(235, 231, 224, 0.9);	
+				padding: 20px;
+				font-size: 14px;
+				color: #44749D;
+				border: 1px solid #fff;
+				overflow: hidden;
+				border-radius: 4px;
+			}
+			
+			#slider .slide-block h4 {
+				font-size: 46px;
+				font-weight: bold;
+				margin: 0 0 10px 0;
+				line-height: 1;
+			}
+			#slider .slide-block p {
+				margin: 0;
+			}
+			.caroufredsel_wrapper{
+				margin: 0;
+			}</style>
+	<script type="text/javascript">
+			$(function() {
+				$('#slider').carouFredSel({
+					width: '100%',
+					align: false,
+					items: 3,
+					items: {
+						width: $('#wrapper').width() * 0.15,
+						height: 500,
+						visible: 1,
+						minimum: 1
+					},
+					scroll: {
+						items: 1,
+						timeoutDuration : 5000,
+						onBefore: function(data) {
+			
+							//	find current and next slide
+							var currentSlide = $('.slide.active', this),
+								nextSlide = data.items.visible,
+								_width = $('#wrapper').width();
+			
+							//	resize currentslide to small version
+							currentSlide.stop().animate({
+								width: _width * 0.15
+							});		
+							currentSlide.removeClass( 'active' );
+			
+							//	hide current block
+							data.items.old.add( data.items.visible ).find( '.slide-block' ).stop().fadeOut();					
+			
+							//	animate clicked slide to large size
+							nextSlide.addClass( 'active' );
+							nextSlide.stop().animate({
+								width: _width * 0.7
+							});						
+						},
+						onAfter: function(data) {
+							//	show active slide block
+							data.items.visible.last().find( '.slide-block' ).stop().fadeIn();
+						}
+					},
+					onCreate: function(data){
+			
+						//	clone images for better sliding and insert them dynamacly in slider
+						var newitems = $('.slide',this).clone( true ),
+							_width = $('#wrapper').width();
+
+						$(this).trigger( 'insertItem', [newitems, newitems.length, false] );
+			
+						//	show images 
+						$('.slide', this).fadeIn();
+						$('.slide:first-child', this).addClass( 'active' );
+						$('.slide', this).width( _width * 0.15 );
+			
+						//	enlarge first slide
+						$('.slide:first-child', this).animate({
+							width: _width * 0.7
+						});
+			
+						//	show first title block and hide the rest
+						$(this).find( '.slide-block' ).hide();
+						$(this).find( '.slide.active .slide-block' ).stop().fadeIn();
+					}
+				});
+			
+				//	Handle click events
+				$('#slider').children().click(function() {
+					$('#slider').trigger( 'slideTo', [this] );
+				});
+			
+				//	Enable code below if you want to support browser resizing
+				$(window).resize(function(){
+			
+					var slider = $('#slider'),
+						_width = $('#wrapper').width();
+			
+					//	show images
+					slider.find( '.slide' ).width( _width * 0.15 );
+			
+					//	enlarge first slide
+					slider.find( '.slide.active' ).width( _width * 0.7 );
+			
+					//	update item width config
+					slider.trigger( 'configuration', ['items.width', _width * 0.15] );
+				});
+
+			});</script>
+</head>
+
+<body>
+	<div id="page" class="site">
+
+		<div class="carousel">
+		    <div class="carousel-inner">
+		        <input class="carousel-open" type="radio" id="carousel-1"   name="carousel" aria-hidden="true" hidden="" checked="checked">
+		        <div class="carousel-item">
+		          	<div id="container" align="center" class="featured-slider">
+		          		<!-- <video autoplay loop poster="/css/main1.png"> -->
+		            	<video autoplay loop>
+		            		<source src="css/main1.mp4" width="auto" height="auto" type="video/mp4">
+		            		Your browser does not support the video tag.
+		          		</video>
+		<!-- 				<div id="custom-message" class="featured-text">
+							<img class="animated1 fadeInTop" width="398" height="179" src="imgs/qclogo1.png">
+							<!-- <h1 class="animated1 fadeInTop">Through</h1>
+							<h2 class="animated2 fadeInTop">STRUGGLE</h2>
+							<h1 class="animated3 fadeInTop">We Grow</h1> -->
+						<!--</div> -->
+					</div>
+		        </div>
+	        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+	        <div class="carousel-item">
+	        	<div class="featured-slider2">
+					<div class="featured-text2">
+						<h1 class="">Meet Our Founder</h1>
+						<h2 class="">NICK ENGMANN</h2>
+						<div>
+							<button id="buttons" onclick="showDiv()" >Click To Learn More</button>
+						</div>
+					</div>
+	          	</div>
+	        </div>
+
+	        <label for="carousel-2" class="carousel-control next control-1">›</label>
+	        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+	 
+	        
+	        <ol class="carousel-indicators">
+	            <li>
+	                <label for="carousel-1" class="carousel-bullet">•</label>
+	            </li>
+	            <li>
+	                <label for="carousel-2" class="carousel-bullet">•</label>
+	            </li>
+	        </ol>
+	      
+	    </div>
+		</div>
+		<div class="nav-footer">
+			<img width="358" height="139" src="imgs/qclogo1.png">
+		</div>
+
+		<div class="about">
+			<div class="about-inner">
+				<div class="about-text">
+					<img class="animated1 fadeInTop" width="858" height="539" src="imgs/qclogo4.png">
+					<h2>Quod Certamine is a group of intelligent, persistant, and tactful engineers. Our goal is to utilize our vast set of engineering and social skills to complete any task that comes our way.</h2>
+					<h2>The phrase <strong>Quod Certamine</strong> is Latin for <i>"The Struggle"</i>. Quod Certamine engineers are committed to solving complex engineering problems regardless of the difficulties embedded within the task.</h2>
+				</div>
+			</div>
+		</div>
+		<div class="services-mobile">
+			<div class="services-inner">
+				<div class="services-title">
+					<h1>SERVICES</h1>
+					<hr>
+				</div>
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+				  <div class="flipper">
+				    <div class="front">
+				      <div class="back-logo1"></div>
+				      <!-- <span class="name">Mobile Applications</span> -->
+				    </div>
+				    <div class="back">
+				      <div class="back-title">Mobile</div>
+				      <p>Team of expert mobile application developers using the latest tools and their technical knowledge for both IoS and Android platforms</p>
+				    </div>
+				  </div>
+				</div>
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+				  <div class="flipper">
+				    <div class="front">
+				      <div class="back-logo2"></div>
+				      <!-- <span class="name">Hardware Design</span> -->
+				    </div>
+				    <div class="back">
+				      <div class="back-title">Hardware</div>
+				      <p>We utilize our engineering expertise to prototype and design hardware solutions.</p>
+				    </div>
+				  </div>
+				</div>
+				  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+				  <div class="flipper">
+				    <div class="front">
+				      <div class="back-logo3"></div>
+				      <!-- <span class="name">Web Development</span> -->
+				    </div>
+				    <div class="back">
+				      <div class="back-title">Web</div>
+				      <p>Web development services using a variety of platforms for efficient web solutions.</p>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="services">
+			<div class="services-inner">
+				<div id="wrapper">
+					<div id="slider">				
+						<div class="slide" style="background-image: url(imgs/webdev.jpg);">
+							<div class="slide-block">
+								<h4>Web Development</h4>
+								<p>Web development services using a variety of platforms for efficient web solutions.</p>
+							</div>
+						</div>
+				 
+						<div class="slide" style="background-image: url(imgs/mobileapp.jpg);">
+							<div class="slide-block">
+								<h4>Mobile App Development</h4>
+								<p>Team of expert mobile application developers using the latest tools and their technical knowledge for both iOS and Android platforms.</p>
+							</div>
+						</div>
+				 
+						<div class="slide" style="background-image: url(imgs/hardware.jpg);">
+							<div class="slide-block">
+								<h4>Hardware</h4>
+								<p>We utilize our engineering expertise to prototype and design hardware solutions.</p>
+							</div>
+						</div>			 
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="CEO" class="about">
+			<div class="about-inner">
+				<div class="about-text">
+					<h1>WHO IS NICK ENGMANN?</h1>
+					<hr>
+					<h2>Throughout his college career Nick Engmann developed a thirst for knowledge. 
+						He majored in Electrical Engineering but he found himself taking classes in advertising, history, software developing, machine learning and eventually picked up a government minor as well. 
+						Upon graduating from the University of Texas at Austin Nick Engmann wanted to continue to fill his desire for learning by founding Quod Certamine.</h2>
+					<h2>Nick Engmann envisioned Quod Certamine as a job opportunity for individuals who wanted to use their diverse skillsets to create new innovations. Nick Engmann also saw Quod Certamine as a learning opportunity for new graduates who also want to test their minds.</h2>
+					<h2>Quod Certamine uniquely replicates some aspects of the college experience. Quod Certamine fosters an environment where employees can study and learn from each other and the resources that Quod Certamine has at its fingerpits to help engineers and designers build bigger and better products for their clients.</h2>
+				</div>
+			</div>
+		</div>
+		<div id="skillset">
+			<div class="skillset-inner">
+				<div class="skillset-title">
+					<h1>SKILLSET</h1>
+				</div>
+			</div>
+			<div class="skillset-grid">
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/analytics.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/wordpress.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/php.png">
+						</div>
+					</div>
+				</div>
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/jquery.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/python.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/web.png">
+						</div>
+					</div>
+				</div>	
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/gimp.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/social.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/matlab.png">
+						</div>
+					</div>
+				</div>
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/swift.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/c.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/java.png">
+						</div>
+					</div>
+				</div>
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/firebase.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/three.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/webrtc.png">
+						</div>
+					</div>
+				</div>
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/nodejs.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/fabric.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/amazon.png">
+						</div>
+					</div>
+				</div>	
+				<div class="row client-row">
+					<div class="row-wrapper">
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/pyvisa.png">
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/ni.png">				
+						</div>
+						<div class="col-sm-3 text-center">
+							<img width="398" height="179" src="imgs/after/initialstate.png">
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="contact">
+			<div class="contact-inner">
+				<div class="contact-title">
+					<h1>GET IN TOUCH</h1>
+					<hr>
+				</div>
+				<div class="contact-form">
+					<div class="contact-form-text">
+						<p> Whether you have a project that you would like us to get started on or you are an engineer looking for a new position feel free to contact us. 
+							We would love the opportunity to meet with you over coffee and discuss your latest prospectives!</p>
+					</div>
+					<div class="contact-form-form">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a href="https://nickengmann.com">Designed by Nick Engmann</a>
+	</footer><!-- .site-footer -->      
+  </body>
+</html>
