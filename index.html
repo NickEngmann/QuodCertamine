@@ -93,6 +93,11 @@
 				margin: 0;
 			}</style>
 	<script type="text/javascript">
+		function formOpen() {
+			window.open("https://goo.gl/forms/IjQDdVm0S9nwH8Cv2");
+		}
+	</script>
+	<script type="text/javascript">
 			$(function() {
 				$('#slider').carouFredSel({
 					width: '100%',
@@ -440,8 +445,9 @@
 					<div class="contact-form-text">
 						<p> Whether you have a project that you would like us to get started on or you are an engineer looking for a new position feel free to contact us. 
 							We would love the opportunity to meet with you over coffee and discuss your latest prospectives!</p>
-					</div>
-					<div class="contact-form-form">
+						<div class="contact-form-form">
+							<input type="submit" value="Contact Us" onclick="formOpen();"/>
+						</div>
 					</div>
 				</div>
 			</div>
