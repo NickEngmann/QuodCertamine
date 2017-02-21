@@ -1,0 +1,12 @@
+Adobe After Effects v13.5 Windows 64 render log for project “logo 2.aep”
+
+Rendering started on 2/20/2017 at 11:54:03 PM
+
+  2/20/2017 11:54:03 PM: Starting composition “main2”.
+
+  Output To: C:\Users\Nick\Desktop\Projects\Quod Certamine\website\main2_3.avi    2/20/2017 11:54:38 PM: Finished composition “main2”.
+
+
+  Total Time Elapsed: 35 Seconds
+Log closed on 2/20/2017 at 11:54:38 PM
+

@@ -1,0 +1,12 @@
+Adobe After Effects v13.5 Windows 64 render log for project “logo 2.aep”
+
+Rendering started on 2/20/2017 at 11:04:41 PM
+
+  2/20/2017 11:04:41 PM: Starting composition “intrologo”.
+
+  Output To: C:\Users\Nick\Desktop\Projects\Quod Certamine\website\intrologo\intrologo.avi    2/20/2017 11:04:41 PM: Finished composition “intrologo”.
+
+
+  Total Time Elapsed: 
+Log closed on 2/20/2017 at 11:04:41 PM
+
