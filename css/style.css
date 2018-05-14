@@ -2714,7 +2714,6 @@ p > video {
 		background: inherit;
 		content: "";
 		display: block;
-		height: 21px;
 		left: 0;
 		position: fixed;
 		width: 100%;
@@ -2733,9 +2732,6 @@ p > video {
 		bottom: 0;
 	}
 
-	.site {
-		margin: 21px;
-	}
 
 	.site-main {
 		margin-bottom: 5.25em;
