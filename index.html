@@ -5,111 +5,21 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link href="https://fonts.googleapis.com/css?family=Roboto|Titillium+Web:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/ie8.css" />
 	<link rel="stylesheet" type="text/css" href="css/custom.css" />
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
+	<script src="js/slider.js" type="text/javascript"></script>
 	<script type="text/javascript">
-    	function showDiv() {
+		function formOpen() {
+			window.open("https://goo.gl/forms/IjQDdVm0S9nwH8Cv2");
+		}
+		function showDiv() {
    			document.getElementById('CEO').style.display = "block";
    			$('html, body').animate({ scrollTop: $('#CEO').offset().top }, 'slow');
    			return false;
 		}
 	</script>
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script src="js/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		function formOpen() {
-			window.open("https://goo.gl/forms/IjQDdVm0S9nwH8Cv2");
-		}
-	</script>
-	<script type="text/javascript">
-			$(function() {
-				$('#slider').carouFredSel({
-					width: '100%',
-					align: false,
-					items: 3,
-					items: {
-						width: $('#wrapper').width() * 0.15,
-						height: 500,
-						visible: 1,
-						minimum: 1
-					},
-					scroll: {
-						items: 1,
-						timeoutDuration : 5000,
-						onBefore: function(data) {
-			
-							//	find current and next slide
-							var currentSlide = $('.slide.active', this),
-								nextSlide = data.items.visible,
-								_width = $('#wrapper').width();
-			
-							//	resize currentslide to small version
-							currentSlide.stop().animate({
-								width: _width * 0.15
-							});		
-							currentSlide.removeClass( 'active' );
-			
-							//	hide current block
-							data.items.old.add( data.items.visible ).find( '.slide-block' ).stop().fadeOut();					
-			
-							//	animate clicked slide to large size
-							nextSlide.addClass( 'active' );
-							nextSlide.stop().animate({
-								width: _width * 0.7
-							});						
-						},
-						onAfter: function(data) {
-							//	show active slide block
-							data.items.visible.last().find( '.slide-block' ).stop().fadeIn();
-						}
-					},
-					onCreate: function(data){
-			
-						//	clone images for better sliding and insert them dynamacly in slider
-						var newitems = $('.slide',this).clone( true ),
-							_width = $('#wrapper').width();
-
-						$(this).trigger( 'insertItem', [newitems, newitems.length, false] );
-			
-						//	show images 
-						$('.slide', this).fadeIn();
-						$('.slide:first-child', this).addClass( 'active' );
-						$('.slide', this).width( _width * 0.15 );
-			
-						//	enlarge first slide
-						$('.slide:first-child', this).animate({
-							width: _width * 0.7
-						});
-			
-						//	show first title block and hide the rest
-						$(this).find( '.slide-block' ).hide();
-						$(this).find( '.slide.active .slide-block' ).stop().fadeIn();
-					}
-				});
-			
-				//	Handle click events
-				$('#slider').children().click(function() {
-					$('#slider').trigger( 'slideTo', [this] );
-				});
-			
-				//	Enable code below if you want to support browser resizing
-				$(window).resize(function(){
-			
-					var slider = $('#slider'),
-						_width = $('#wrapper').width();
-			
-					//	show images
-					slider.find( '.slide' ).width( _width * 0.15 );
-			
-					//	enlarge first slide
-					slider.find( '.slide.active' ).width( _width * 0.7 );
-			
-					//	update item width config
-					slider.trigger( 'configuration', ['items.width', _width * 0.15] );
-				});
-
-			});</script>
 </head>
 
 <body>
@@ -120,7 +30,6 @@
 		        <input class="carousel-open" type="radio" id="carousel-1"   name="carousel" aria-hidden="true" hidden="" checked="checked">
 		        <div class="carousel-item">
 		          	<div id="container" align="center" class="featured-slider">
-		          		<!-- <video autoplay loop poster="/css/main1.png"> -->
 		            	<video autoplay loop poster="/css/main1.png">
 		            		<source src="css/main2.mp4" width="auto" height="auto" type="video/mp4">
 		            		Your browser does not support the video tag.
@@ -143,7 +52,6 @@
 	        <label for="carousel-2" class="carousel-control next control-1">›</label>
 	        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
 	 
-	        
 	        <ol class="carousel-indicators">
 	            <li>
 	                <label for="carousel-1" class="carousel-bullet">•</label>
@@ -276,6 +184,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<a href="https://nickengmann.com">Designed by Nick Engmann</a>
-	</footer><!-- .site-footer -->      
+	</footer>
+  
   </body>
 </html>
